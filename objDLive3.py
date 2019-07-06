@@ -8,7 +8,7 @@ while True:
     # Reading image dimensions
     height, width = image.shape[:2]
 
-    # Dimensions for left part
+    # Dimensions for left side part
     start_row, start_col = int(0), int(0)
     end_row, end_col = int(height), int(width * 1/3)
     cropped_left = image[start_row:end_row , start_col:end_col]
