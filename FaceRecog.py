@@ -6,7 +6,10 @@ import imutils
 import pickle
 import time
 import cv2
-
+from gtts import gTTS
+import os
+import speech as spk
+ 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-e", "--encodings", required=True,
@@ -27,7 +30,7 @@ data = pickle.loads(open(args["encodings"], "rb").read())
 print("[INFO] starting video stream...")
 vs = VideoStream(src=0).start()
 writer = None
-time.sleep(2.0)
+time.sleep(1.0)
 # loop over frames from the video file stream
 while True:
 	# grab the frame from the threaded video stream
@@ -89,6 +92,7 @@ while True:
 		y = top - 15 if top - 15 > 15 else top + 15
 		cv2.putText(frame, name, (left, y), cv2.FONT_HERSHEY_SIMPLEX,
 			0.75, (0, 255, 0), 2)
+		
 	# if the video writer is None *AND* we are supposed to write
 	# the output video to disk initialize the writer
 	if writer is None and args["output"] is not None:
@@ -104,6 +108,10 @@ while True:
 	# the screen
 	if args["display"] > 0:
 		cv2.imshow("Frame", frame)
+		if name == 'Unknown':
+			spk.speak('Sorry I donot recognize you')
+		else:
+			spk.speak(name)
 		key = cv2.waitKey(1) & 0xFF
 
 		# if the `q` key was pressed, break from the loop
