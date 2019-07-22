@@ -9,7 +9,8 @@ import cv2
 from gtts import gTTS
 import os
 import speech as spk
- 
+
+#/usr/bin/python3 /home/riya/Documents/Sahya/Sahya/FaceRecog.py --encodings encodings.pickle --output output/lunch.avi --display 1
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-e", "--encodings", required=True,
@@ -31,6 +32,7 @@ print("[INFO] starting video stream...")
 vs = VideoStream(src=0).start()
 writer = None
 time.sleep(1.0)
+nameL = []
 # loop over frames from the video file stream
 while True:
 	# grab the frame from the threaded video stream
@@ -111,7 +113,9 @@ while True:
 		if name == 'Unknown':
 			spk.speak('Sorry I donot recognize you')
 		else:
-			spk.speak(name)
+			if name not in nameL:
+				spk.speak(name)
+				nameL.append(name)
 		key = cv2.waitKey(1) & 0xFF
 
 		# if the `q` key was pressed, break from the loop
