@@ -1,3 +1,4 @@
+#Execution: python3 FaceRecog.py --encodings encodings.pickle --output output/lunch.avi --display 1
 # import the necessary packages
 from imutils.video import VideoStream
 import face_recognition
@@ -10,10 +11,6 @@ from gtts import gTTS
 import os
 import speech as spk
 
-<<<<<<< HEAD:FaceRecog.py
-#/usr/bin/python3 /home/riya/Documents/Sahya/Sahya/FaceRecog.py --encodings encodings.pickle --output output/lunch.avi --display 1
-=======
->>>>>>> 1cc12cc14ab459c66ce1a264c6f0ebcfbcfc010d:FaceRecog/FaceRecog.py
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-e", "--encodings", required=True,

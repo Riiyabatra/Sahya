@@ -1,5 +1,5 @@
+# Execution: python3 faceencoder.py --dataset dataset -e encodings.pickle
 # import the necessary packages
-# python3 faceencoder.py --dataset dataset -e encodings.pickle
 from imutils import paths
 import face_recognition
 import argparse
