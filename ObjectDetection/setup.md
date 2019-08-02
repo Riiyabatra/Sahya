@@ -43,7 +43,7 @@
 
   put the provided code within this folder
 
-  open a cmd and type 
+  open a cmd within darkflow-master and type 
   ```
   python objdect.py
   ```
